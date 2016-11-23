@@ -18,6 +18,15 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+/**
+ * PullLoadMoreRecyclerView的使用
+ * 1.导包: compile 'com.wuxiaolong.pullloadmorerecyclerview:library:1.1.1'
+ * 2.布局:及初始化控件
+ * 3.设置布局管理器
+ * 4.设置适配器
+ * 5.设置分割线
+ * 6.设置下拉上拉,点击监听等
+ */
 public class MainActivity extends AppCompatActivity {
     private int i;
     private String path;
@@ -95,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
                 path = "http://japi.juhe.cn/joke/content/list.from?key=%20874ed931559ba07aade103eee279bb37%20&page=1&pagesize=10&sort=asc&time=1418745237";
                 requestdata(path, REFRESH);
             }
-
             @Override
             public void onLoadMore() {
                 path = "http://japi.juhe.cn/joke/content/list.from?key=%20874ed931559ba07aade103eee279bb37%20&page=" + ++i + "&pagesize=10&sort=asc&time=1418745237";
@@ -118,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     private void initView() {
         mPullLoadMoreRecyclerView = (PullLoadMoreRecyclerView) findViewById(R.id.pullLoadMoreRecyclerView);
     }
