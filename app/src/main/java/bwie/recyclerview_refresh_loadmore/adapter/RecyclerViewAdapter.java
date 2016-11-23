@@ -38,15 +38,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        //3.在需要的地方调用,注意是在点击item时调用
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onitemselectedListenner.onSelectedListenner(position);
-            }
-        });
-
         holder.text1.setText(mydata.get(position).content + "\n" + mydata.get(position).updatetime);
+        //3.在需要的地方调用,注意是在点击item时调用,注意判断接口是否为空,如果(那边)没有实例化接口就会报空指针
+        if(onitemselectedListenner!=null){
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onitemselectedListenner.onSelectedListenner(position);
+                }
+            });
+        }
+
+
+
     }
 
     @Override
